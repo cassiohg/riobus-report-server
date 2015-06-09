@@ -1,0 +1,24 @@
+{
+  "name": "riobus-report-server",
+  "version": "1.0.0",
+  "description": "server that will listen for calls and repass to spark software",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cassiohg/riobus-report-server.git"
+  },
+  "keywords": [
+    "riobus",
+    "report",
+    "api"
+  ],
+  "author": "Cassio Holanda Gonçalves",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cassiohg/riobus-report-server/issues"
+  },
+  "homepage": "https://github.com/cassiohg/riobus-report-server"
+}
