@@ -31,15 +31,20 @@ app.get('/speedLimit/:speed/:dateBeggin/:dateEnd/:xrec/:yrec/:xlength/:yheight',
 		for (var key in req.params)
 			concatenatedParams += " " + req.params[key]
 	}
+
+	// reading paths from file. This file makes changing path easier when moving code to another machine.
+	paths = JSON.parse(fs.readFileSync(__dirname + "/paths.json"));
 		
 	// command that will be used on command line. 
 	// better explained here https://spark.apache.org/docs/1.3.1/submitting-applications.html
-	var command = '/usr/local/share/spark-1.3.1-bin-hadoop2.6/bin/spark-submit ' +
+	var command = paths.submit + " " + 
 				  // '--master local[*] ' +
 				  // '--master spark://cassios-mac.lan:7077 ' +
 				  // '--deploy-mode cluster ' + 
-				  '/Users/cassiohg/Coding/Scala/riobus-report/target/scala-2.10/riobus-report_2.10-1.0.jar' +
+				  paths.jar +
 				  concatenatedParams // passing arguments to spark. 'concatenatedParams' starts with a space character.
+	console.log(command)
+	console.log(paths)
 
 	// calling command execution.
 	var spark = exec(command, function (error, stdout, stderr) {
