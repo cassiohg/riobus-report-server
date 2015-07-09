@@ -18,13 +18,12 @@ app.use('/', function (req, res, next) {
 });
 
 // our rest method
-app.get('/speedLimit/:speed/:dateBeggin/:dateEnd/:xrec/:yrec/:xlength/:yheight/:returnLength', function (req, res, next) {
+app.get('/speedLimit/:speed/:dateBeggin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:returnLength', function (req, res, next) {
 	
 	var concatenatedParams = ""
 
 	if( parseFloat(req.params.speed) && parseFloat(req.params.xrec) && parseFloat(req.params.yrect) &&
 	parseFloat(req.params.xlength) && parseFloat(req.params.yheight) ) {
-		console.log('oops')
 		res.json({'info':'one paramter could not be converted to float.'})
 		return
 	} else {
