@@ -18,7 +18,7 @@ app.use('/', function (req, res, next) {
 });
 
 // our rest method
-app.get('/speedLimit/:speed/:dateBeggin/:dateEnd/:xrec/:yrec/:xlength/:yheight', function (req, res, next) {
+app.get('/speedLimit/:speed/:dateBeggin/:dateEnd/:xrec/:yrec/:xlength/:yheight/:returnLength', function (req, res, next) {
 	
 	var concatenatedParams = ""
 
