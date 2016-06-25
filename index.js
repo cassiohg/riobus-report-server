@@ -26,7 +26,6 @@ app.get('/speedLimit/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:speed/:returnL
 		[req.params.lat1, req.params.lng1, req.params.lat2, req.params.lng2, req.params.speed, req.params.returnLength],
 		res, 
 		function (err, data) {
-			console.log(data)
 			if (err) throw err; 
 			var lines = data.split("\n") // file content is returned as one string block, we are splitting it into lines.
 			var obj = {} // an object that will hold all the information to be converted to JSON and sent on response.
@@ -81,22 +80,24 @@ function testParamsBuildCommandRunJobAndReturnResults(jobTag, dateParametersArra
 	// command that will be used on command line. 
 	// better explained here https://spark.apache.org/docs/1.3.1/submitting-applications.html
 	var command = paths.submit + " " + 
-	              '--class '+ paths.class[jobTag] + " " + 
+	              '--class '+ paths.jobs[jobTag].class + " " + 
 	              '--driver-memory 1536m ' +
 	              '--master local[*] ' +
-	              paths.jar[jobTag] + " " +
-	              paths.result[jobTag] +
+	              paths.jobs[jobTag].jar + " " +
+	              paths.jobs[jobTag].result +
 	              concatenatedParams // passing arguments to spark. 'concatenatedParams' starts with a space character.
 	console.log("command", command)
 
 	// calling command execution.
 	var spark = exec(command, function (error, stdout, stderr) {
+		console.log("____________starting a new job______________________________")
 		console.log('stdout: ' + stdout); // will print the output on console.
 		console.log('stderr: ' + stderr); // print error on console.
-		if (error !== null) console.log('node received this error: ' + error);
-
+		if (error !== null) 
+			console.log('node received this error: ' + error);
+		console.log("‾‾‾‾‾‾‾‾‾‾‾‾job finished‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" + "\n\n")
 		// after the end of execution, we will read the result file.
-		fs.readFile(paths.result[jobTag], 'utf8',resultFunction)
+		fs.readFile(paths.jobs[jobTag].result, 'utf8',resultFunction)
 	});
 }
 

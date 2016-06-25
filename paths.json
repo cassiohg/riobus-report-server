@@ -1,15 +1,15 @@
 {
 	"submit": "/usr/local/spark-1.6.1-bin-hadoop2.4/bin/spark-submit",
-	"class": {
-		"topSpeed": "TopSpeed",
-		"averageSpeed": "AverageSpeed"
-	},
-	"jar": {
-		"topSpeed": "/Users/cassiohg/Coding/Scala/riobus-report-top-speed/target/scala-2.10/topspeed_2.10-1.0.jar",
-		"averageSpeed": "/Users/cassiohg/Coding/Scala/riobus-report-average-speed/target/scala-2.10/averagespeed_2.10-1.0.jar"
-	},
-	"result": {
-		"topSpeed": "/Users/cassiohg/Downloads/topSpeed-result.txt",
-		"averageSpeed": "/Users/cassiohg/Downloads/averageSpeed-result.txt"
+	"jobs": {
+		"topSpeed": {
+			"class": "TopSpeed",
+			"jar" : "/Users/cassiohg/Coding/Scala/riobus-report-top-speed/target/scala-2.10/topspeed_2.10-1.0.jar",
+			"result": "/Users/cassiohg/Downloads/topSpeed-result.txt"
+		},
+		"averageSpeed": {
+			"class": "AverageSpeed",
+			"jar" : "/Users/cassiohg/Coding/Scala/riobus-report-average-speed/target/scala-2.10/averagespeed_2.10-1.0.jar",
+			"result": "/Users/cassiohg/Downloads/averageSpeed-result.txt"
+		}
 	}
 }
