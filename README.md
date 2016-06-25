@@ -1,11 +1,11 @@
-# riobus-report
+# riobus-report-server
 
-<h6>you nodejs 6.0+ installed</h6>
+<h6>you need nodejs 6.0+ installed</h6>
 <ol>
     <li>clone repository</li>
     <li>cd to project folder <br>
     <code>$ cd path/to/project</code></li>
-    <li>instal dependencies with npm <br>
+    <li>install dependencies with npm <br>
     <code>$ npm install</code></li>
     <li>run app<br>
     <code>$ node index.js</code><br>
@@ -37,6 +37,6 @@ file should look like this
  * jar: path to jobs's respective jars.
  * result: path to the output file that job will write to and server will read from.
 
-this exemple file has 2 jobs listed. adding more jobs to the server's REST api means more attributes should be added to 'jobs' object.
+this example file has 2 jobs listed. adding more jobs to the server's REST api means more attributes should be added to 'jobs' object.
 
 you can change this file at anytime. the server will read the file again whenever a request in done to any of the job calls.
