@@ -10,6 +10,9 @@
     "type": "git",
     "url": "https://github.com/cassiohg/riobus-report-server.git"
   },
+  "dependencies": {
+    "express": "~4.12.4"
+  },
   "keywords": [
     "riobus",
     "report",
