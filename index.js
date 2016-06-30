@@ -43,11 +43,11 @@ app.get('/speedLimit/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:speed/:returnL
 
 });
 
-app.get('/busLineCount/:dateBegin/:dateEnd/:returnLength', function (req, res, next) {
+app.get('/busLineCount/:dateBegin/:dateEnd/', function (req, res, next) {
 	testParamsBuildCommandRunJobAndReturnResults(
 		'busLineCount',
 		[req.params.dateBegin, req.params.dateEnd],
-		[req.params.returnLength],
+		[],
 		res,
 		function (err, data) {
 			if (err) throw err;
@@ -99,9 +99,9 @@ function testParamsBuildCommandRunJobAndReturnResults(jobTag, dateParametersArra
 	var concatenatedParams = " " + dateParametersArray.concat(numberParametersArray).join(" ")	
 
 	// command that will be used on command line. 
-	// better explained here https://spark.apache.org/docs/1.3.1/submitting-applications.html
+	// better explained here https://spark.apache.org/docs/1.6.1/submitting-applications.html
 	var command = paths.submit + " " + 
-	              '--class '+ paths.jobs[jobTag].class + " " + 
+	              '--class "'+ paths.jobs[jobTag].class + '" ' + 
 	              '--driver-memory 1536m ' +
 	              '--master local[*] ' +
 	              paths.jobs[jobTag].jar + " " +

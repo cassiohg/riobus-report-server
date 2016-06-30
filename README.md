@@ -27,9 +27,15 @@ file should look like this
                 "class": "AverageSpeed",
                 "jar" : "/Users/cassiohg/Coding/Scala/riobus-report-average-speed/target/scala-2.10/averagespeed_2.10-1.0.jar",
                 "result": "/Users/cassiohg/Downloads/averageSpeed-result.txt"
+            },
+            "busLineCount": {
+                "class": "BusLineCount",
+                "jar": "/Users/davidbrittojr/workspace/BigData/riobus-report/riobus-report-bus-line-count/target/scala-2.10/buslinecount_2.10-1.0.jar",
+                "result":  "/Users/davidbrittojr/busLineCount-result.txt"
             }
         }
     }
+
 
 * submit: the path to spark-submit file
 * jobs: will contain an attribute (a tag) for each job, inside each attribute there will be an object with 3 attributes:
