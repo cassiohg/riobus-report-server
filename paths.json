@@ -1,5 +1,5 @@
 {
-	"submit": "/usr/local/spark-1.6.1-bin-hadoop2.4/bin/spark-submit",
+	"submit": "spark-submit",
 	"jobs": {
 		"topSpeed": {
 			"class": "TopSpeed",
@@ -10,6 +10,11 @@
 			"class": "AverageSpeed",
 			"jar" : "/Users/cassiohg/Coding/Scala/riobus-report-average-speed/target/scala-2.10/averagespeed_2.10-1.0.jar",
 			"result": "/Users/cassiohg/Downloads/averageSpeed-result.txt"
+		},
+		"busLineCount": {
+			 "class": "BusLineCount",
+			 "jar": "/Users/davidbrittojr/workspace/BigData/riobus-report/riobus-report-bus-line-count/target/scala-2.10/buslinecount_2.10-1.0.jar",
+			 "result":  "/Users/davidbrittojr/busLineCount-result.txt"
 		}
 	}
 }

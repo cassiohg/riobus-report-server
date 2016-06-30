@@ -43,6 +43,27 @@ app.get('/speedLimit/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:speed/:returnL
 
 });
 
+app.get('/busLineCount/:dateBegin/:dateEnd/:returnLength', function (req, res, next) {
+	testParamsBuildCommandRunJobAndReturnResults(
+		'busLineCount',
+		[req.params.dateBegin, req.params.dateEnd],
+		[req.params.returnLength],
+		res,
+		function (err, data) {
+			if (err) throw err;
+			var lines = data.split("\n");
+			var obj = {}
+			obj.description = 'Contagem do número de ônibus por linha'
+			obj.arguments = lines[0].split(',')
+			obj.sample = []
+			for (var i = 1; i < lines.length -1; i++) {
+				obj.sample.push(lines[i].split(','))
+			}
+			res.json(obj)
+		}
+	)
+});
+
 app.get('/averagespeed/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/', function (req, res, next) {
 	testParamsBuildCommandRunJobAndReturnResults(
 		'averageSpeed',  
