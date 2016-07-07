@@ -13,7 +13,7 @@ var server = app.listen(3000, function () {
 });
 
 app.use('/', function (req, res, next) {
-	console.log(' - a request has arrived:', req.originalUrl);
+	console.log((new Date()) + ' - a request has arrived:', req.originalUrl);
 	next();
 });
 
@@ -107,16 +107,16 @@ function testParamsBuildCommandRunJobAndReturnResults(jobTag, dateParametersArra
 	              paths.jobs[jobTag].jar + " " +
 	              paths.jobs[jobTag].result +
 	              concatenatedParams // passing arguments to spark. 'concatenatedParams' starts with a space character.
-	console.log("command", command)
+	console.log((new Date()) + " command", command)
 
 	// calling command execution.
 	var spark = exec(command, function (error, stdout, stderr) {
-		console.log("____________starting a new job______________________________")
+		console.log("____________starting a new job______________________________" + (new Date()) )
 		console.log('stdout: ' + stdout); // will print the output on console.
 		console.log('stderr: ' + stderr); // print error on console.
 		if (error !== null) 
 			console.log('node received this error: ' + error);
-		console.log("‾‾‾‾‾‾‾‾‾‾‾‾job finished‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" + "\n\n")
+		console.log("‾‾‾‾‾‾‾‾‾‾‾‾job finished‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾‾" + (new Date()) + "\n\n")
 		// after the end of execution, we will read the result file.
 		fs.readFile(paths.jobs[jobTag].result, 'utf8',resultFunction)
 	});
