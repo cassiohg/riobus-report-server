@@ -36,8 +36,8 @@ app.get('/speedLimit/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:speed/:returnL
 			for (var i = 2; i < lines.length - 1; i++) { //starting from the second line
 				obj.sample.push(lines[i].split(',')) // push line, converted to array, into sample array.
 			}
-			res.json(obj) // sending object, converted to JSON, on response. this is why I have put everything inside
-						  // one object. This call converts an object to JSON and sends it in the response.
+			res.json(obj) /* sending object, converted to JSON, on response. this is why I have put everything inside
+			one object. This call converts an object to JSON and sends it in the response. */
 		}
 	)
 
@@ -55,9 +55,9 @@ app.get('/busLineCount/:dateBegin/:dateEnd/', function (req, res, next) {
 			var obj = {}
 			obj.description = 'Contagem do número de ônibus por linha'
 			obj.arguments = lines[0].split(',')
-			obj.sample = []
+			obj.lines = []
 			for (var i = 1; i < lines.length -1; i++) {
-				obj.sample.push(lines[i].split(','))
+				obj.lines.push(lines[i].split(','))
 			}
 			res.json(obj)
 		}

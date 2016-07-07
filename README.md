@@ -46,3 +46,27 @@ file should look like this
 this example file has 2 jobs listed. adding more jobs to the server's REST api means more attributes should be added to 'jobs' object.
 
 you can change this file at anytime. the server will read the file again whenever a request in done to any of the job calls.
+
+<br>
+<h3>REST API functionalities</h3>
+
+Return registers sample that are over a given speed limit inside a rectangle between a date interval
+
+    method: GET
+    path: /speedLimit/<dateBegin>/<dateEnd>/<lat1>/<lng1>/<lat2>/<lng2>/<speed>/<returnLength>
+    successful return: {description: "blablabla", arguments: [a,b,c,e,d,f,g,h], size: total found, sample: [[register1], [register2], ...]}
+    unsuccessful return: {info:'one or more parameters could not be converted to their correct type.', parameters: [wrong-parameter1, wrong-parameter2, ...]}
+
+Return the amount of busses for each existing bus line inside a date interval
+
+    method: GET
+    path: /busLineCount/<dateBegin>/<dateEnd>
+    successful return:  {description: "blablabla", arguments: [a,b], lines: [[line1, amount1], [line2, amount2], ...]}
+    unsuccessful return: {info:'one or more parameters could not be converted to their correct type.', parameters: [wrong-parameter1, wrong-parameter2, ...]}
+
+Get the average speed of all busses inside a rectangle between a date interval
+
+    method: GET
+    path: /averagespeed/<dateBegin>/<dateEnd>/<lat1>/<lng1>/<lat2>/<lng2>
+    successful return:  {description: "blablabla", arguments: [a,b,c,d,e,f], result: <number>}
+    unsuccessful return: {info:'one or more parameters could not be converted to their correct type.', parameters: [wrong-parameter1, wrong-parameter2, ...]}
