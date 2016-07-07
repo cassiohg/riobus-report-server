@@ -50,6 +50,14 @@ you can change this file at anytime. the server will read the file again wheneve
 <br>
 <h3>REST API functionalities</h3>
 
+parameters formats:
+
+* dates: 2016-07-07T12:21:00
+* latitude or longitude: -22.3456778
+ * lat1 and lng1 correspond to the rectangle's bottom left vertex
+ * lat2 and lng2 correspond to the rectangle's top right vertex
+
+
 Return registers sample that are over a given speed limit inside a rectangle between a date interval
 
     method: GET
@@ -57,14 +65,17 @@ Return registers sample that are over a given speed limit inside a rectangle bet
     successful return: {description: "blablabla", arguments: [a,b,c,e,d,f,g,h], size: total found, sample: [[register1], [register2], ...]}
     unsuccessful return: {info:'one or more parameters could not be converted to their correct type.', parameters: [wrong-parameter1, wrong-parameter2, ...]}
 
-Return the amount of busses for each existing bus line inside a date interval
+* speed: inter or double
+* returnLength: integer only.
+
+Return the amount of buses for each existing bus line inside a date interval
 
     method: GET
     path: /busLineCount/<dateBegin>/<dateEnd>
     successful return:  {description: "blablabla", arguments: [a,b], lines: [[line1, amount1], [line2, amount2], ...]}
     unsuccessful return: {info:'one or more parameters could not be converted to their correct type.', parameters: [wrong-parameter1, wrong-parameter2, ...]}
 
-Get the average speed of all busses inside a rectangle between a date interval
+Get the average speed of all buses inside a rectangle between a date interval
 
     method: GET
     path: /averagespeed/<dateBegin>/<dateEnd>/<lat1>/<lng1>/<lat2>/<lng2>
