@@ -12,11 +12,21 @@ var server = app.listen(3000, function () {
 
 });
 
-app.use('/', function (req, res, next) {
-	console.log((new Date()).toLocaleString() + ' - a request has arrived:', req.originalUrl);
-	next();
-});
+// app.use('/api', function (req, res, next) {
+// 	console.log((new Date()).toLocaleString() + ' - a request has arrived:', req.originalUrl);
+// 	next();
+// });
 
+// serving statics for website
+app.use(express.static('../riobus-report-website/dist/'));
+app.use('/', express.static('../riobus-report-website/dist/index.html'));
+
+// allow cors
+app.use(function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
 
 // our rest method
 app.get('/speedLimit/:dateBegin/:dateEnd/:lat1/:lng1/:lat2/:lng2/:speed/:returnLength', function (req, res, next) {
