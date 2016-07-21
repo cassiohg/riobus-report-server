@@ -12,14 +12,13 @@ var server = app.listen(3000, function () {
 
 });
 
-// app.use('/api', function (req, res, next) {
-// 	console.log((new Date()).toLocaleString() + ' - a request has arrived:', req.originalUrl);
-// 	next();
-// });
+app.use('/', function (req, res, next) {
+	console.log((new Date()).toLocaleString() + ' - a request has arrived:', req.originalUrl);
+	next();
+});
 
 // serving statics for website
 app.use(express.static('../riobus-report-website/dist/'));
-app.use('/', express.static('../riobus-report-website/dist/index.html'));
 
 // allow cors
 app.use(function(req, res, next) {
